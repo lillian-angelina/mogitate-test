@@ -1,0 +1,223 @@
+/* 全体のレイアウト設定 */
+body {
+    font-family: 'Inika', serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* コンテナのスタイル */
+.store {
+    width: 100%;
+    margin: 0 0 0 40px;
+    padding: 20px;
+}
+
+.store__sidebar {
+
+}
+
+/* 商品一覧タイトルとボタンを上部に配置 */
+.store__form {
+    width: 92%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Hiragino Kaku Gothic Pro;
+    font-weight: 600;
+    font-size: 32px;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+/* メインのレイアウト（検索サイドバー + 商品一覧） */
+.store__content {
+    display: flex;
+    align-items: flex-start; /* 上揃え */
+    gap: 40px; /* サイドバーと商品リストの間隔 */
+}
+
+.add-product-btn {
+    font-family: Hiragino Kaku Gothic Pro;
+    font-weight: 600;
+    font-size: 16px;
+    color: #4B4B4B;
+    width: 137px;
+    height: 50px;
+    padding: 13px 20px;
+    gap: 10px;
+    border-radius: 5px;
+    background-color: #FFA929;
+    box-shadow: 0px 4px 10px 0px #0000001A;
+    text-decoration: none; /* アンダーラインを削除 */
+}
+
+/* 検索サイドバー */
+.store__sidebar {
+    width: 240px;
+    height: 267px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    border-bottom: 1px solid #E0DFDE
+}
+
+/* 検索フォームのスタイル */
+.store__keyword {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+}
+
+/* 検索入力スペース */
+.store__keyword input {
+    width: 240px;
+    height: 50px;
+    padding: 14.5px 10px;
+    width: 100%;
+    border: 1px solid #E0DFDE;
+    border-radius: 25px;
+    color: #E0DFDE;
+    background: #FFFFFF;
+}
+
+/* 検索ボタン */
+.button-submit {
+    width: 240px;
+    height: 44px;
+    font-size: 16px;
+    padding: 10px;
+    background: #F5C800;
+    box-shadow: 0px 4px 10px 0px #0000001A;
+    color: #4B4B4B;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 並び替えセレクトボックスのスタイル */
+.form-second {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    height: 267px;
+    gap: 20px;
+}
+
+.form-second__label {
+    width: 100%;
+    font-family: Hiragino Kaku Gothic Pro;
+    font-weight: 600;
+    font-size: 20px;
+    color: #333333;
+}
+
+.form-second__select {
+    width: 240px;
+    height: 43px;
+    padding: 11px 10px;
+    border: 1px solid #E0DFDE;
+    border-radius: 5px;
+    font-family: Hiragino Kaku Gothic Pro;
+    font-weight: 300;
+    font-size: 14px;
+    background-color:#FFFFFF;
+     color: #E0DFDE;
+
+}
+
+/* 商品一覧のスタイル */
+.store__products {
+    display: grid;
+    grid-template-columns: repeat(3, 30%);
+    gap: 20px;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+/* 商品アイテムのスタイル */
+.store__product-item {
+    height: 350px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative; /* 画像の外にテキストを配置するため */
+}
+
+/* 画像のスタイル */
+.product-image {
+    width: 355px;
+    height: 281px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* 商品名（画像の左下外） */
+.product-name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 18px;
+    font-weight: bold;
+    background: white;
+    padding: 0 10px 15px 10px;
+    border-radius: 5px;
+}
+
+/* 商品価格（画像の右下外） */
+.product-price {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 16px;
+    color: #4B4B4B;
+    background: white;
+    padding: 0 10px 15px 10px;
+    border-radius: 5px;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    background-color: #f8f8f8;
+    margin-top: 20px; /* コンテンツとフッターの間隔 */
+}
+
+/* ページネーションの位置とデザイン */
+.pagination {
+    display: inline-block;
+    text-align: center;
+}
+
+.pagination li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.pagination a, .pagination span {
+    display: inline-block;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+    background-color: #fff;
+}
+
+.pagination .active span {
+    background-color: #F5C800;
+    color: #fff;
+    font-weight: bold;
+}
+
+.pagination .disabled span {
+    color: #aaa;
+    pointer-events: none;
+}

@@ -1,0 +1,183 @@
+.title {
+    margin: 0 0 0 30%;
+    font-size: 32px;
+    font-family: Hiragino Kaku Gothic Pro;
+    font-weight: 600;
+    color: #333333;
+}
+
+body {
+    background-color: #F8F8F8;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    text-align: left;
+}
+
+.item-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    font-size: 16px;
+    color: #4B4B4B;
+    width: 100vw;
+    height: 100vh;
+    margin: 0 0 0 30%;
+}
+
+.item-name__main {
+    color: #4B4B4B;
+}
+
+.season__options label {
+    margin: 0 30px 0 0;
+    font-size: 16px;
+    color: #4B4B4B;
+}
+
+/* 横並びにする */
+.season__options {
+    display: flex;
+    gap: 20px; /* チェックボックス間のスペース */
+}
+
+/* カスタムの〇を作成 */
+.season__options label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    padding-left: 30px; /* チェックマークの分だけスペースを空ける */
+}
+
+/* デフォルトのチェックボックスを非表示にする（ただしクリック可能にする） */
+.season__options--season {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* チェックボックスのデザイン */
+.season__options label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+/* チェックされた時のデザイン */
+.season__options--season:checked + label::before {
+    content: '✔';
+    font-size: 16px;
+    color: #4B4B4B;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+}
+
+.item-name__sub {
+    width: 760px;
+    height: 43px;
+    gap: 10px;
+    border: 1px solid #E0DFDE;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(224, 223, 222, 1);
+    padding: 11px 10px;
+}
+
+/* ファイル入力を隠す */
+.item-name__sample {
+    display: none;
+}
+
+/* カスタムのラベルを作成 */
+.custom-file-label {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #E0DFDE; /* ボタンの色 */
+    color: #4B4B4B; /* 文字色 */
+    border: 1px solid #4B4B4B;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+}
+
+.picture input {
+    width: 118px;
+    height: 31px;
+    border: 1px solid #E0DFDE;
+    color: #4B4B4B;
+
+}
+
+.from_item--required {
+    margin: 0 5px 0 10px;
+    padding: 0 5px;
+    font-size: 12px;
+    color: #F8F8F8;
+    background-color: #FD0707;
+}
+
+.from_item--text {
+    margin: 0 5px;
+    font-size: 12px;
+    color: #FD0707;
+    background-color: #F8F8F8;
+}
+
+.item__explanation--textarea {
+    font-size: 14px;
+    font-weight: 300;
+    padding: 11px 10px;
+    gap: 10px;
+    width: 760px;
+    height: 160px;
+    resize: none;
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(224, 223, 222, 1);
+    border: 1px solid #E0DFDE;
+    border-radius: 5px;
+}
+
+.item-button {
+    width: 760px;
+    height: 50px;
+    text-align: center;
+}
+
+.item-button__edit, .item-button__submit {
+    width: 200px;
+    height: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 13px 10px;
+    border-radius: 5px;
+    background-color: #E0DFDE;
+    box-shadow: 0px 4px 10px 0px #0000001A;
+    color: #4B4B4B;
+    border: none;
+    margin: 0 5px;
+}
+
+.item-button__submit {
+    background-color: #F5C800;
+}
+
+.error-message {
+    color: red; /* 文字の色を赤に */
+    font-size: 14px; /* 文字サイズを小さめに */
+    font-weight: bold; /* 文字を強調 */
+    margin-top: 5px; /* 上の要素との間隔を空ける */
+}

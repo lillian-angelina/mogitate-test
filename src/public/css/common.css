@@ -1,0 +1,43 @@
+/* body 全体の高さを確保 */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* ビューポート全体の高さを確保 */
+    margin: 0;
+    padding: 0;
+}
+
+/* ヘッダーの設定 */
+.header {
+    position: relative; /* 上部に配置 */
+
+    height: 60px; /* ヘッダーの高さ */
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+    padding-left: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* main が画面全体に広がるようにする */
+main {
+    flex-grow: 1; /* 残りのスペースを埋める */
+    width: 100%;
+    padding-bottom: 20px; /* 余白を確保 */
+}
+
+
+.header h3 {
+    margin: 0 0 0 20px;
+    font-family: jsMath-cmti10;
+    font-size: 30px;
+    text-align: left;
+    color: #F5C800;
+}
+
+@font-face {
+    font-family: 'jsMath-cmti10';
+    src: url('src/fonts/jsMath-cmti10/jsMath-cmti10.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
