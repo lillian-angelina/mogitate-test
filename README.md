@@ -44,7 +44,6 @@ services:
 
   mysql:
     image: mysql:8
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: laravel_db
@@ -58,7 +57,6 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    restart: always
     ports:
       - "8081:80"
     environment:
