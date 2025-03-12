@@ -62,6 +62,7 @@ body {
     opacity: 0;
     width: 0;
     height: 0;
+    pointer-events: none; /* クリックイベントを無効化しない */
 }
 
 /* チェックボックスのデザイン */
@@ -74,6 +75,7 @@ body {
     border: 1px solid #000;
     border-radius: 50%;
     background-color: #fff;
+    cursor: pointer; /* クリック可能なカーソルを表示 */
 }
 
 /* チェックされた時のデザイン */
@@ -121,6 +123,23 @@ body {
     color: #4B4B4B;
 
 }
+
+/* 商品画像プレビューのスタイル */
+.image-preview {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    width: 374px; /* 画像の表示サイズ */
+    height: 281px;
+    height: auto;
+    overflow: hidden;
+    border: none;
+}
+
+.image-preview img {
+    width: 100%; /* 画像が親要素の幅にフィットするように */
+    height: auto;
+}
+
 
 .from_item--required {
     margin: 0 5px 0 10px;

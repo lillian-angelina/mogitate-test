@@ -21,7 +21,7 @@
             <form class="form" action="{{ route('products.search') }}" method="GET">
                 @csrf
                 <div class="store__keyword">
-                    <input type="text" name="keyword" placeholder="商品名で検索">
+                    <input type="text" name="keyword" placeholder="商品名で検索" value="{{ request('keyword') }}">
                     <button class="button-submit" type="submit">検索</button>
                 </div>
             </form>
@@ -42,6 +42,8 @@
         <div class="store__products">
             @foreach($products as $product)
                 <div class="store__product-item">
+                     <!-- 商品画像にリンクを追加 -->
+                     <a href="{{ route('products.show', ['productId' => $product->id]) }}">
                     <!-- 商品画像 -->
                     @if($product->image)
                         <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="product-image">

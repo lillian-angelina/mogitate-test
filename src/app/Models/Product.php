@@ -11,8 +11,10 @@ class Product extends Model
 
     protected $fillable = ['name', 'price', 'image', 'description'];
 
+    // Product.php
     public function seasons()
     {
-        return $this->belongsToMany(Season::class, 'product_season');
+        return $this->belongsToMany(Season::class, 'product_season', 'product_id', 'season_id');
     }
+
 }

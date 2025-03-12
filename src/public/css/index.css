@@ -15,10 +15,6 @@ body {
     padding: 20px;
 }
 
-.store__sidebar {
-
-}
-
 /* 商品一覧タイトルとボタンを上部に配置 */
 .store__form {
     width: 92%;
@@ -144,7 +140,7 @@ body {
     height: 350px;
     background-color: white;
     border-radius: 10px;
-    padding: 10px;
+    padding: 0;
     text-align: center;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     position: relative; /* 画像の外にテキストを配置するため */
@@ -152,7 +148,7 @@ body {
 
 /* 画像のスタイル */
 .product-image {
-    width: 355px;
+    width: 450px;
     height: 281px;
     object-fit: cover;
     border-radius: 5px;
@@ -182,6 +178,10 @@ body {
     border-radius: 5px;
 }
 
+a {
+    display: contents;
+}
+
 footer {
     width: 100%;
     text-align: center;
@@ -202,12 +202,16 @@ footer {
 }
 
 .pagination a, .pagination span {
-    display: inline-block;
+
     padding: 6px 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     text-decoration: none;
     color: #333;
+    background-color: #fff;
+}
+
+.pagination a {
     background-color: #fff;
 }
 
@@ -218,6 +222,7 @@ footer {
 }
 
 .pagination .disabled span {
-    color: #aaa;
+    color: #333;
     pointer-events: none;
+    background-color: #fff;
 }
