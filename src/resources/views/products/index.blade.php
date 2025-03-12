@@ -43,7 +43,7 @@
             @foreach($products as $product)
                 <div class="store__product-item">
                      <!-- 商品画像にリンクを追加 -->
-                     <a href="{{ route('products.show', ['productId' => $product->id]) }}">
+                     <a class="product-picture" href="{{ route('products.show', ['productId' => $product->id]) }}">
                     <!-- 商品画像 -->
                     @if($product->image)
                         <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="product-image">

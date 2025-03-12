@@ -42,19 +42,14 @@
 
         <p class="season__group">季節<span class="from_item--required">必須</span><span class="from_item--text">複数選択可</span></p>
         <div class="season__options">
-            <label>
-                <input class="season__options--season" type="checkbox" name="season[]" value="春" {{ is_array(old('season')) && in_array('春', old('season')) ? 'checked' : '' }}> 春
-            </label>
-            <label>
-                <input class="season__options--season" type="checkbox" name="season[]" value="夏" {{ is_array(old('season')) && in_array('夏', old('season')) ? 'checked' : '' }}> 夏
-            </label>
-            <label>
-                <input class="season__options--season" type="checkbox" name="season[]" value="秋" {{ is_array(old('season')) && in_array('秋', old('season')) ? 'checked' : '' }}> 秋
-            </label>
-            <label>
-                <input class="season__options--season" type="checkbox" name="season[]" value="冬" {{ is_array(old('season')) && in_array('冬', old('season')) ? 'checked' : '' }}> 冬
-            </label>
-        </div>
+    @foreach ($seasons as $season)
+        <label>
+            <input type="checkbox" class="season__options--season" name="season[]" value="{{ $season->id }}">
+            <span>{{ $season->name }}</span>
+        </label>
+    @endforeach
+</div>
+
         @error('season')
             <p style="color: red;">{{ $message }}</p>
         @enderror

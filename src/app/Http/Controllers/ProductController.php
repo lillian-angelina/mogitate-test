@@ -20,18 +20,17 @@ class ProductController extends Controller
     // 商品詳細
     public function show($productId)
     {
-        // 商品IDに基づいて商品を取得
-        $product = Product::findOrFail($productId);
-        
-        // 商品詳細ビューにデータを渡す
-        return view('products.show', compact('product'));
+        $product = Product::with('seasons')->findOrFail($productId);
+        $seasons = Season::all(); // seasons テーブルのデータを取得
+    
+        return view('products.show', compact('product', 'seasons'));
     }
 
     // 商品登録フォーム
     public function create()
     {
-        $seasons = Season::all();  // 季節情報を取得
-        return view('products.create', ['product' => []]); // 空の配列を渡す
+        $seasons = Season::all(); // 全ての季節データを取得
+        return view('products.create', compact('seasons')); 
     }
 
     // 商品登録処理
@@ -42,7 +41,7 @@ class ProductController extends Controller
             'name' => 'required|string',
             'price' => 'required|numeric|min:0|max:10000',
             'season' => 'required|array',
-            'season.*' => 'string',
+            'season.*' => 'exists:seasons,id', // 季節IDが `seasons` テーブルに存在するかチェック
             'description' => 'required|string|max:120',
             'image' => 'required|image|mimes:png,jpeg|max:2048',
         ], [
@@ -78,39 +77,67 @@ class ProductController extends Controller
         $seasonString = implode(',', $seasonArray);
     
         // 商品の保存
-        Product::create([
-            'name' => $request->input('name'),
-            'price' => $request->input('price'),
-            'image' => $imagePath,
-            'description' => $request->input('description'),
-            'season' => $seasonString, // 結果としてカンマ区切りの文字列を保存
+        $product = Product::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'image' => $request->file('image')->store('images', 'public'),
+            'description' => $request->description,
         ]);
     
-        return redirect()->route('products.index');
+        // 選択された季節を `product_season` に保存
+        foreach ($request->season as $season_id) {
+            ProductSeason::create([
+                'product_id' => $product->id,
+                'season_id' => $season_id,
+            ]);
+        }
+    
+        return redirect()->route('products.index')->with('success', '商品を登録しました。');
     }
     
     public function update(Request $request, $productId)
     {
-    // バリデーション
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'price' => 'required|numeric',
-        'description' => 'required|string',
-    ]);
-
-    // 更新する商品を取得
-    $product = Product::findOrFail($productId);
-
-    // データを更新
-    $product->update([
-        'name' => $request->input('name'),
-        'price' => $request->input('price'),
-        'description' => $request->input('description'),
-    ]);
-
-    return redirect()->route('products.index')->with('success', '商品を更新しました');
+        $product = Product::findOrFail($productId);
+    
+        // バリデーション
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'description' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'season' => 'nullable|array', // 季節は配列で受け取る
+            'season.*' => 'exists:seasons,id' // 各値はseasonsテーブルのidであること
+        ]);
+    
+        // フォームの値を保存
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->description = $request->description;
+    
+        // 画像の更新処理
+        if ($request->hasFile('image')) {
+            // 既存の画像を削除（必要なら）
+            if ($product->image) {
+                Storage::delete('public/' . $product->image);
+            }
+    
+            // 新しい画像を保存
+            $imagePath = $request->file('image')->store('products', 'public');
+            $product->image = $imagePath;
+        }
+    
+        $product->save(); // 商品情報を保存
+    
+        // 季節の更新（product_season の中間テーブルを更新）
+        if ($request->has('season')) {
+            $product->seasons()->sync($request->season); // 選択された季節のみ更新
+        } else {
+            $product->seasons()->detach(); // 季節の選択がなければ関連を削除
+        }
+    
+        return redirect()->route('products.index')->with('success', '商品を更新しました');
     }
-
+    
     // 商品検索
     public function search(Request $request)
     {
@@ -137,6 +164,13 @@ class ProductController extends Controller
     $product = Product::findOrFail($productId);
     $product->delete();
     return redirect()->route('products.index')->with('success', '商品を削除しました');
+    }
+
+    public function edit($id)
+    {
+    $product = Product::findOrFail($id);
+    $seasons = Season::all();
+    return view('products.edit', compact('product', 'seasons'));
     }
 
 }

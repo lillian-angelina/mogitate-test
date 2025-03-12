@@ -12,7 +12,7 @@ Route::prefix('products')->group(function () {
     Route::get('/{productId}/update', [ProductController::class, 'edit'])->name('products.edit'); // 商品更新
     Route::put('/{productId}/update', [ProductController::class, 'update'])->name('products.update');
     Route::post('/{productId}/update', [ProductController::class, 'update'])->name('products.update'); // 商品更新処理
-    Route::post('/{productId}/delete', [ProductController::class, 'destroy'])->name('products.destroy'); // 商品削除
+    Route::delete('/{productId}/delete', [ProductController::class, 'destroy'])->name('products.destroy'); // 商品削除
 });
 
 // ルートの変更

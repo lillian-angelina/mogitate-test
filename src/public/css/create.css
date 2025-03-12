@@ -62,7 +62,7 @@ body {
     opacity: 0;
     width: 0;
     height: 0;
-    pointer-events: none; /* クリックイベントを無効化しない */
+    cursor: pointer;
 }
 
 /* チェックボックスのデザイン */
@@ -75,18 +75,20 @@ body {
     border: 1px solid #000;
     border-radius: 50%;
     background-color: #fff;
-    cursor: pointer; /* クリック可能なカーソルを表示 */
 }
 
 /* チェックされた時のデザイン */
-.season__options--season:checked + label::before {
+.season__options input[type="checkbox"]:checked + label::before {
     content: '✔';
     font-size: 16px;
     color: #4B4B4B;
     text-align: center;
+    width: 50%;
     line-height: 20px;
     font-weight: bold;
+    background-color: #F5C800; /* チェック時の背景色 */
 }
+
 
 .item-name__sub {
     width: 760px;
@@ -188,6 +190,7 @@ body {
     color: #4B4B4B;
     border: none;
     margin: 0 5px;
+    cursor: pointer;
 }
 
 .item-button__submit {

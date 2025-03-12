@@ -45,15 +45,18 @@
 
                 <div class="product-detail__season">
                     <p><strong>季節</strong></p>
-                    @php
-                                // データが配列ではなく、カンマ区切りの文字列で保存されている場合を考慮
-                                $selectedSeasons = is_array($product->season) ? $product->season : explode(',', $product->season);
-                    @endphp
+                        @php
+                            // 商品に関連する季節を取得
+                            $selectedSeasons = $product->seasons->pluck('id')->toArray();
+                        @endphp
 
-                    <label><input type="checkbox" name="season[]" value="春" {{ in_array(trim('春'), $selectedSeasons) ? 'checked' : '' }}> 春</label>
-                    <label><input type="checkbox" name="season[]" value="夏" {{ in_array(trim('夏'), $selectedSeasons) ? 'checked' : '' }}> 夏</label>
-                    <label><input type="checkbox" name="season[]" value="秋" {{ in_array(trim('秋'), $selectedSeasons) ? 'checked' : '' }}> 秋</label>
-                    <label><input type="checkbox" name="season[]" value="冬" {{ in_array(trim('冬'), $selectedSeasons) ? 'checked' : '' }}> 冬</label>
+                        @foreach ($seasons as $season)
+                    <label>
+                    <input type="checkbox" name="season[]" value="{{ $season->id }}" 
+                        {{ in_array($season->id, $selectedSeasons) ? 'checked' : '' }}>
+                        {{ $season->name }}
+                    </label>
+                        @endforeach
                 </div>
             </div>
         </div>
@@ -68,7 +71,7 @@
     <form action="{{ route('products.destroy', ['productId' => $product->id]) }}" method="POST" class="delete-form">
         @csrf
         @method('DELETE')
-        <button type="submit" class="delete-button">🗑️ 削除</button>
+        <button type="submit" class="delete-button">🗑️</button>
     </form>
 </div>
 
