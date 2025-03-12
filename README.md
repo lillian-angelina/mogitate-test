@@ -7,12 +7,23 @@
 git clone git@github.com:lillian-angelina/mogitate-test.git
 cd ~/coachtech/laravel/mogitate-test
 
+## コンテナの起動
 docker-compose up -d --build
 
+## Laravel のセットアップ
 docker-compose exec php bash
 composer install
 php artisan key:generate
 php artisan migrate --seed
+
+## キャッシュクリア（エラー回避のため）
+php artisan config:clear
+php artisan cache:clear
+php artisan view:clear
+php artisan route:clear
+
+## 権限設定（ストレージ関連）
+chmod -R 777 storage bootstrap/cache
 
 docker-compose.yml
 services:
@@ -58,6 +69,10 @@ services:
     depends_on:
       - mysql
 
+## .env ファイルの作成・編集
+cp .env.example .env
+
+## .env を開き、以下を設定
 .env (Database)
 DB_CONNECTION=mysql
 DB_HOST=mysql
