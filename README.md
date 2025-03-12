@@ -71,7 +71,7 @@ php: "8.2"
 laravel/framework: "12.0"
 
 ##ER図
-![ER図](er-diagram.png)
+![ER図](https://github.com/lillian-angelina/mogitate-test/blob/main/er-diagram.png.png)
 
 
 ## URL
