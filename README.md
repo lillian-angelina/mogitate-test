@@ -7,14 +7,6 @@
 git clone git@github.com:lillian-angelina/mogitate-test.git
 cd ~/coachtech/laravel/mogitate-test
 
-.env (Database)
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=laravel_db_new
-DB_USERNAME=laravel_user
-DB_PASSWORD=laravel_pass
-
 docker-compose up -d --build
 
 docker-compose exec php bash
@@ -66,11 +58,19 @@ services:
     depends_on:
       - mysql
 
-##使用技術(実行環境)
+.env (Database)
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel_db_new
+DB_USERNAME=laravel_user
+DB_PASSWORD=laravel_pass
+
+## 使用技術(実行環境)
 php: "8.2"
 laravel/framework: "12.0"
 
-##ER図
+## ER図
 ![ER図](https://github.com/lillian-angelina/mogitate-test/blob/main/er-diagram.png.png)
 
 
