@@ -26,13 +26,19 @@ main {
     padding-bottom: 20px; /* 余白を確保 */
 }
 
+.header a{
+    text-decoration: none;
+    color: #F5C800;
+}
 
-.header h3 {
+
+.header label {
     margin: 0 0 0 20px;
     font-family: jsMath-cmti10;
     font-size: 30px;
     text-align: left;
     color: #F5C800;
+    
 }
 
 @font-face {

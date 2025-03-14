@@ -13,7 +13,7 @@
 </head>
 <body>
     <header class="header">
-        <h3>mogitate</h3>
+        <label><a href="{{ route('products.index') }}">mogitate</label>
     </header>
 
     <main>

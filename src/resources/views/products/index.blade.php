@@ -10,7 +10,7 @@
 <div class="store">
     <!-- 上部タイトル -->
     <div class="store__form">
-        <label>商品一覧</label>
+        <a class="store__form--home"href="{{ route('products.index') }}">商品一覧</a>
         <a class="add-product-btn" href="{{ route('products.create') }}">+ 商品追加</a>
     </div>
 
