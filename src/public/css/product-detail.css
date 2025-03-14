@@ -1,46 +1,77 @@
 /* product-detail.css */
+body {
+    font-family: 'Inika', serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
 
 .product-detail {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1300px;
+    margin: 10px 213px;
     padding: 20px;
+
+}
+
+.product-detail__form {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
 }
 
 .product-detail__body {
     display: flex;
-    gap: 20px;
     align-items: flex-start;
+    margin: 0 0 0 90px;
 }
 
 .product-detail__image {
     flex: 1;
-    position: relative;
+    width: 396px;
 }
 
 .product-detail__info {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+
+    max-width: 50%;
+
+    width: 396px;
+    height: 291px;
+    gap: 10px;
+    margin-top: 5px;
 }
 
+.product-detail__header input,
+.product-detail__price input {
+    width: 396px;
+    height: 43px;
+    font-size: 14px;
+    padding: 11px 10px;
+}
 
-.product-detail__header h1 {
-    font-size: 32px;
+.product-detail__header label,
+.product-detail__price label,
+.product-detail__season strong {
+    font-size: 16px;
     font-weight: bold;
     color: #333;
 }
 
-.product-detail__price {
-    font-size: 24px;
-    color: #F5C800;
-    margin-top: 10px;
+.product-detail__image--img {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    width: 374px;
 }
 
-.product-detail__image img {
-    max-width: 200px;
+.product-detail__image--img img {
+    width: 100%;
     height: auto;
     display: block;
+    cursor: pointer;
 }
 
 .product-detail__description {
@@ -49,15 +80,65 @@
     margin-top: 20px;
 }
 
-.product-detail__season {
-    font-size: 18px;
-    color: #333;
+.product-detail__textarea {
+    display: flex;
+    resize: none;
+    width: 800px;
+    height: 160px;
+}
+
+/* 丸いチェックボックス */
+.product-detail__season input[type="checkbox"] {
+    appearance: none; /* デフォルトのスタイルを消す */
+    width: 18px;
+    height: 18px;
+    border: 2px solid #333; /* 外枠 */
+    border-radius: 50%; /* 丸くする */
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    vertical-align: middle;
+    background-color: white;
+}
+
+/* チェック時のデザイン */
+.product-detail__season input[type="checkbox"]:checked {
+    background-color: #333; /* 丸を黒く塗りつぶす */
+    border: 2px solid #333; /* 外枠 */
+}
+
+/* ✔ を表示する */
+.product-detail__season input[type="checkbox"]::after {
+    content: "✔";
+    font-size: 12px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+/* チェック時に ✔ を表示 */
+.product-detail__season input[type="checkbox"]:checked::after {
+    display: block;
+}
+
+.product-detail__season label {
+    margin-right: 30px;
+    font-size: 16px;
+}
+
+.product-detail__season p {
+    font-size: 16px;
     margin-top: 20px;
 }
 
 .product-detail__footer {
     margin-top: 30px;
     text-align: center;
+    width: 800px;
+    height: 50px;
 }
 
 .product-detail__footer--button,
@@ -73,6 +154,29 @@
     color: #4B4B4B;
     border: none;
     margin: 0 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.product-detail__footer--button {
+    padding: 15px 84px;
+}
+
+.delete-form {
+    position: absolute;
+    bottom: 27%;
+    right: 31.8%;
+}
+
+.delete-button {
+    position: relative;
+    background: none;
+    border: none;
+    width: 20px;
+    height: 22.67px;
+    cursor: pointer;
+    color: #ff4d4d;
+    text-align: right;
 }
 
 .product-detail__footer--submit {

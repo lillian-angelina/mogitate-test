@@ -9,7 +9,7 @@
 
 @section('content')
 <div class="product-detail">
-    <form action="{{ route('products.update', ['productId' => $product->id]) }}" method="POST" enctype="multipart/form-data">
+    <form class="product-detail__form" action="{{ route('products.update', ['productId' => $product->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -19,27 +19,26 @@
                 <div class="breadcrumb">
                     <a href="{{ route('products.index') }}">商品一覧</a> &gt; {{ $product->name }}
                 </div>
-                <p>現在の画像:</p>
-                <img id="image-preview" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
-                <p>画像を変更:</p>
-                <input type="file" name="image" id="image" onchange="previewImage()">
-
+                <div class="product-detail__image--img">
+                    <img id="image-preview" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                    <input type="file" name="image" id="image" onchange="previewImage()">
+                </div>
                 <!-- 画像の下に商品説明 -->
                 <div class="product-detail__description">
-                    <label for="description">商品説明:</label>
-                    <textarea name="description" id="description">{{ old('description', $product->description) }}</textarea>
+                    <label for="description">商品説明</label>
+                    <textarea class="product-detail__textarea" name="description" id="description">{{ old('description', $product->description) }}</textarea>
                 </div>
             </div>
 
             <!-- 右側：商品情報 -->
             <div class="product-detail__info">
                 <div class="product-detail__header">
-                    <label for="name">商品名:</label>
+                    <p><label for="name">商品名</label></p>
                     <input type="text" name="name" id="name" value="{{ old('name', $product->name) }}">
                 </div>
 
                 <div class="product-detail__price">
-                    <label for="price">価格:</label>
+                    <p><label for="price">価格</label></p>
                     <input type="number" name="price" id="price" value="{{ old('price', $product->price) }}">
                 </div>
 
@@ -52,8 +51,8 @@
 
                         @foreach ($seasons as $season)
                     <label>
-                    <input type="checkbox" name="season[]" value="{{ $season->id }}" 
-                        {{ in_array($season->id, $selectedSeasons) ? 'checked' : '' }}>
+                        <input type="checkbox" name="season[]" value="{{ $season->id }}" 
+                                {{ in_array($season->id, $selectedSeasons) ? 'checked' : '' }}>
                         {{ $season->name }}
                     </label>
                         @endforeach
@@ -66,12 +65,11 @@
             <button class="product-detail__footer--submit" type="submit">変更を保存</button>
         </div>
     </form>
-
-    <!-- 削除ボタン -->
-    <form action="{{ route('products.destroy', ['productId' => $product->id]) }}" method="POST" class="delete-form">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="delete-button">🗑️</button>
+           <!-- 削除ボタン -->
+           <form action="{{ route('products.destroy', ['productId' => $product->id]) }}" method="POST" class="delete-form">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="delete-button">🗑️</button>
     </form>
 </div>
 
