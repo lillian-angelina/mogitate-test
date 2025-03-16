@@ -10,7 +10,7 @@
     <div class="title">
         <p>商品登録</p>
     </div>
-<form class="form" action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+<form class="form" action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data" onclick="event.stopPropagation();">
     @csrf
     <div class="item-name">
         <p class="item-name__main" for="name">商品名<span class="from_item--required">必須</span></p>
