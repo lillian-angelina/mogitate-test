@@ -28,6 +28,7 @@ body {
     width: 100vw;
     height: 100vh;
     margin: 0 0 0 30%;
+    text-decoration: none;
 }
 
 .item-name__main {
@@ -149,6 +150,7 @@ body {
     font-size: 12px;
     color: #F8F8F8;
     background-color: #FD0707;
+    text-decoration: none;
 }
 
 .from_item--text {

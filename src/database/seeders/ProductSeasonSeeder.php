@@ -70,5 +70,8 @@ class ProductSeasonSeeder extends Seeder
         DB::table('products')
             ->where('id', 15) // 更新する商品IDを指定
             ->update(['season' => '夏']); // 更新したいseasonの値を指定
+
+        
+
     }
 }

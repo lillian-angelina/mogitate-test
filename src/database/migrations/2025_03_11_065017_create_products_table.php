@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->integer('price')->nullable(false)->comment('商品料金');
             $table->string('image', 255)->nullable(false)->comment('商品画像');
             $table->text('description')->nullable(false)->comment('商品説明');
+            $table->string('season')->nullable();
             $table->timestamps(); // created_at, updated_at
             
             // ストレージエンジンをInnoDBに設定
